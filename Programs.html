@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Programs Offered - SAMIHAS</title>
+    <style>
+        /* Modern CSS Reset & Variables */
+        :root {
+            --primary: #007bb6;       /* Institutional Blue */
+            --primary-dark: #005f8d;  /* Darker shade for accents */
+            --accent: #00AEEF;         /* Vibrant light blue */
+            --text-dark: #1f2937;
+            --text-light: #4b5563;
+            --bg-gradient: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --footer-bg: #111a2e;     /* Deep dark blue to match the reference images */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- INSTITUTIONAL TOP PANEL HEADER --- */
+        header.main-header {
+            background-color:  #007bb6;
+            padding: 5px 10px;
+            border-bottom: 3px solid #005f8d;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 25px;
+        }
+
+        /* --- LOGO FIXES --- */
+        .header-logo {
+            width: 70px;  
+            height: 70px; 
+            border-radius: 50%;
+            object-fit: contain; 
+            background-color: #ffffff; 
+            flex-shrink: 0; 
+            border: 2px solid #ffffff; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            padding: 2px; 
+        }
+
+        .header-text {
+            text-align: center;
+            flex: 1;
+        }
+
+        .ministry-title {
+            color: #ffffff;
+            font-size: 13px; 
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .college-title {
+            color: #ffffff;
+            font-size: 20px; 
+            font-weight: 800;
+            margin-bottom: 4px;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        /* --- NAVIGATION PANEL --- */
+        nav {
+            background: linear-gradient(to right, #00AEEF 80%, #0082C8 100%);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            width: 100%;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .nav-links li {
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .nav-links a {
+            display: block;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 15px 10px;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background-color: var(--primary);
+        }
+
+        /* --- MAIN CONTENT CONTAINER --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+            flex: 1;
+        }
+
+        .content-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .content-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .content-title p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        /* --- CONTROLS: SEARCH & FILTER --- */
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            background: var(--card-bg);
+            padding: 1.25rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .search-box input {
+            padding: 0.75rem 1rem;
+            width: 100%;
+            max-width: 400px;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--accent);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.6rem 1.4rem;
+            border: none;
+            background: #e5e7eb;
+            color: var(--text-dark);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn.active, .btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* --- PROGRAMS GRID & CARDS --- */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .program-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background: var(--primary);
+            color: white;
+            padding: 1.5rem;
+        }
+
+        .badge {
+            background: var(--accent);
+            color: white;
+            padding: 0.25rem 0.6rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-header h2 {
+            font-size: 1.4rem;
+            line-height: 1.3;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .requirements h3 {
+            font-size: 1rem;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .requirements p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .req-divider {
+            margin: 0.75rem 0;
+            font-weight: bold;
+            color: var(--text-dark);
+            text-align: center;
+            position: relative;
+        }
+
+        .req-secondary {
+            margin-top: 0.5rem;
+        }
+
+        .advantage-note {
+            margin-top: 1.25rem;
+            background: #eff6ff;
+            border-left: 4px solid var(--accent);
+            padding: 0.75rem;
+            font-size: 0.85rem;
+            color: #1e40af;
+            border-radius: 0 8px 8px 0;
+            line-height: 1.4;
+        }
+
+        /* --- MODERN 4-COLUMN FOOTER SYSTEM --- */
+        footer {
+            background-color: var(--footer-bg);
+            color: #ffffff;
+            padding: 3.5rem 1.5rem 1.5rem 1.5rem;
+            margin-top: auto;
+            border-top: 4px solid var(--accent);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-col h3 {
+            color: #ffffff;
+            font-size: 1.15rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            padding-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 30px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .footer-col p {
+            color: #b9c4d6;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .footer-col p.footer-motto-wrap {
+            margin-top: 8px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+
+        .footer-col ul li a {
+            color: #b9c4d6;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease, padding-left 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .footer-col ul li a:hover {
+            color: #ffffff;
+            padding-left: 4px;
+        }
+
+        .footer-col ul li a::before {
+            content: '›';
+            color: var(--accent);
+            font-weight: bold;
+            display: inline-block;
+            font-size: 1.2rem;
+            width: 1em;
+            margin-right: 0.2rem;
+            line-height: 1;
+        }
+
+        .footer-email-link {
+            color: #00AEEF;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-email-link:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #24314d;
+            padding-top: 1.5rem;
+            font-size: 0.85rem;
+            color: #71829e;
+        }
+
+        /* --- RESPONSIVE DESIGN BREAKPOINTS --- */
+        @media (max-width: 850px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 12px;
+            }
+            .nav-links li {
+                min-width: 50%;
+            }
+            .nav-links a {
+                padding: 12px 10px;
+            }
+            .content-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 1rem;
+            }
+            .search-box input {
+                max-width: 100%;
+            }
+            .filter-buttons {
+                width: 100%;
+                justify-content: flex-start;
+            }
+            .btn {
+                flex: 1;
+                text-align: center;
+                padding: 0.6rem 0.8rem;
+                font-size: 0.85rem;
+            }
+            .nav-links li {
+                min-width: 100%;
+            }
+            footer {
+                padding: 2.5rem 1rem 1.5rem 1rem;
+            }
+        }
+
+        .social-links { margin-top: 10px; display: flex; gap: 10px; }
+
+.social-icon {
+    width: 35px; /* Ukubwa mdogo */
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: transform 0.2s;
+}
+
+.social-icon:hover { transform: scale(1.1); }
+
+/* Rangi maalum */
+.fb { background-color: #1877F2; }
+.wa { background-color: #25D366; }
+.ig { 
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); 
+}
+
+    </style>
+</head>
+<body>
+
+<header class="main-header" aria-label="Main Website Banner">
+    <div class="header-container">
+        <img class="header-logo" src="image/logo/logo 1.jpeg" alt="SAMIHAS Crest Left Logo">
+
+        <div class="header-text">
+            <p class="ministry-title">The Anglican Diocese of Tanga</p>
+            <h1 class="college-title">St. Augustine Muheza Institute of Health and Allied Sciences (SAMIHAS)</h1>
+        </div>
+
+        <img class="header-logo" src="image/logo/logo 2.jpg" alt="SAMIHAS Right Logo">
+    </div>
+</header>
+
+<nav aria-label="Main Navigation Options">
+    <div class="nav-container">
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="Admission.html">Admission</a></li>
+            <li><a href="Programs.html" class="active">Programs Offered</a></li>
+            <li><a href="Contact.html">Contact Us</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main class="container">
+    <div class="content-title">
+        <h2>Academic Programs Offered</h2>
+        <p>Explore our diploma courses and their corresponding entry guidelines</p>
+    </div>
+
+    <div class="controls">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search programs or requirements...">
+        </div>
+        <div class="filter-buttons" id="filterButtonGroup">
+            <button type="button" class="btn active" data-target="all">All</button>
+            <button type="button" class="btn" data-target="health">Health Sciences</button>
+            <button type="button" class="btn" data-target="community">Social Sciences</button>
+        </div>
+    </div>
+
+    <div class="programs-grid" id="programsGrid">
+
+        <div class="program-card" data-category="health">
+            <div class="card-header">
+                <span class="badge">Ordinary Diploma</span>
+                <h2>Clinical Medicine</h2>
+            </div>
+            <div class="card-body">
+                <div class="requirements">
+                    <h3>Entry Requirements</h3>
+                    <p>Holders of Certificate of Secondary Education Examination (CSEE) with four (4) Passes in non-religious Subjects including "D" Passes in Chemistry, Biology, and Physics/Engineering Sciences.</p>
+                    <div class="advantage-note">
+                        <strong>Added Advantage:</strong> A Pass in Basic Mathematics and English Language.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="program-card" data-category="health">
+            <div class="card-header">
+                <span class="badge">Ordinary Diploma</span>
+                <h2>Nursing and Midwifery</h2>
+            </div>
+            <div class="card-body">
+                <div class="requirements">
+                    <h3>Entry Requirements</h3>
+                    <p>Holders of Certificate of Secondary Education Examination (CSEE) with four (4) Passes in non-religious Subjects including "D" Passes in Chemistry, Biology, and Physics/Engineering Sciences.</p>
+                    <div class="advantage-note">
+                        <strong>Added Advantage:</strong> A Pass in Basic Mathematics and English Language.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="program-card" data-category="community">
+            <div class="card-header">
+                <span class="badge">Diploma</span>
+                <h2>Community Development</h2>
+            </div>
+            <div class="card-body">
+                <div class="requirements">
+                    <h3>Entry Requirements</h3>
+                    <p>Holder of Certificate of Secondary Education Examination (CSEE) with four passes "D" in non-religious subjects <strong>AND</strong> Holders of Any Basic Technician Certificate (NTA Level 4) from NACTE recognized Institution.</p>
+                    <p class="req-divider">OR</p>
+                    <p class="req-secondary">Holder of Advanced Certificate of Secondary Education Examination (ACSEE) with at least one principle pass and two subsidiary passes in relevant subjects.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>SAMIHAS</h3>
+                <p>St. Augustine Muheza Institute of Health and Allied Sciences (SAMIHAS) is a leading institution providing quality health training under the Anglican Diocese of Tanga.</p>
+            </div>
+
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="Admission.html">Admissions</a></li>
+                    <li><a href="Programs.html">Programs Offered</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Boards &amp; Councils</h3>
+                <ul>
+                    <li><a href="https://www.necta.go.tz" target="_blank" rel="noopener">NECTA</a></li>
+                    <li><a href="https://www.nacte.go.tz" target="_blank" rel="noopener">NACTVET (NACTE)</a></li>
+                    <li><a href="https://www.heslb.go.tz" target="_blank" rel="noopener">HESLB</a></li>
+                    <li><a href="https://www.tcu.go.tz" target="_blank" rel="noopener">TCU</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Government Ministries</h3>
+                <ul>
+                    <li><a href="https://www.moh.go.tz" target="_blank" rel="noopener">Ministry of Health</a></li>
+                    <li><a href="https://www.moe.go.tz" target="_blank" rel="noopener">Ministry of Education (MoEST)</a></li>
+                    <li><a href="https://www.tie.go.tz" target="_blank" rel="noopener">Tanzania Institute of Education (TIE)</a></li>
+                    <li><a href="https://www.muhas.ac.tz" target="_blank" rel="noopener">MUHAS University</a></li>
+                </ul>
+            </div>
+                  <div class="social-links">
+                     <h3>Follow Us</h3>
+                     <a href="https://facebook.com/samihas" class="social-icon fb" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                     <a href="https://instagram.com/samihas1943" class="social-icon ig" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                     <a href="https://wa.me/255718792882" class="social-icon wa" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                 </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 St. Augustine Muheza Institute of Health and Allied Sciences (SAMIHAS). All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const searchInput = document.getElementById('searchInput');
+    const filterButtons = document.querySelectorAll('#filterButtonGroup .btn');
+    const cards = document.querySelectorAll('.program-card');
+    let currentCategory = 'all';
+
+    function updateVisibility() {
+        const searchTerm = searchInput.value.toLowerCase();
+
+        cards.forEach(card => {
+            const textContent = card.innerText.toLowerCase();
+            const cardCategory = card.getAttribute('data-category');
+
+            const matchesSearch = textContent.includes(searchTerm);
+            const matchesCategory = (currentCategory === 'all' || cardCategory === currentCategory);
+
+            if (matchesSearch && matchesCategory) {
+                card.style.display = "flex";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    }
+
+    searchInput.addEventListener('input', updateVisibility);
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            currentCategory = this.getAttribute('data-target');
+            updateVisibility();
+        });
+    });
+</script>
+
+</body>
+</html>

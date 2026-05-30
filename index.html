@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>SAMIHAS - St. Augustine Muheza Institute of Health and Allied Sciences</title>
+    <style>
+        /* --- RESET & GLOBAL STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        /* --- HEADER & BRANDING (COMPACT & RESPONSIVE) --- */
+        header {
+            background-color: #007bb6;
+            padding: 5px 10px;
+            border-bottom: 3px solid #005f8d;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 15px;
+        }
+
+        /* --- NEMBO (ROUND LOGOS FIX) --- */
+        .header-logo {
+            width: 70px;  
+            height: 70px; 
+            border-radius: 50%;
+            object-fit: contain;  
+            background-color: #ffffff; 
+            flex-shrink: 0; 
+            border: 2px solid #ffffff;  
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            padding: 2px;  
+        }
+
+        .header-text {
+            text-align: center;
+            flex: 1;
+        }
+
+        .ministry-title {
+            color: #ffffff;
+            font-size: 13px; 
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .college-title {
+            color: #ffffff;
+            font-size: 20px; 
+            font-weight: 800;
+            margin-bottom: 4px;
+            line-height: 1.2;
+        }
+
+        
+
+        /* --- NAVIGATION PANEL (WITH GRADIENT & APPLY NOW) --- */
+        nav {
+            background: linear-gradient(to right, #00AEEF 80%, #0082C8 100%);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            width: 100%;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .nav-links li {
+            flex: 1;
+            text-align: center;
+        }
+
+        .nav-links a {
+            display: block;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 15px 10px;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background-color: #007bb6;
+        }
+
+        /* --- KITUFE CHA APPLY NOW --- */
+        .nav-links li.nav-apply-btn {
+            flex: initial;
+            padding: 0 10px;
+        }
+
+        .nav-links li.nav-apply-btn a {
+            background-color: #ff3b30;
+            color: #ffffff;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-weight: 700;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            border: 2px solid #ffffff;
+        }
+
+        .nav-links li.nav-apply-btn a:hover {
+            background-color: #e0241b;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+        /* Mobile Menu Toggle Button */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 15px 0;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: #ffffff;
+            margin: 2px 0;
+            transition: 0.3s;
+        }
+
+        /* --- HERO / ADMISSION BANNER & SLIDER --- */
+        .hero {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .slides {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* --- MAIN CONTENT SECTION --- */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1.2fr 1.4fr 1.4fr;
+            gap: 25px;
+        }
+        .content-body p {
+    font-size: 15px; 
+    line-height: 1.8; 
+    color: #444;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+        .info-panel {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-top: 4px solid #00AEEF;
+            border-radius: 4px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+
+        .info-panel.news-panel {
+            padding: 0 0 20px 0;
+            background-color: #f7f9fa;
+        }
+
+        .info-panel.news-panel h3 {
+            background-color: #d0f0ff;
+            color: #555555;
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #bce5f7;
+        }
+
+        .info-panel h3 {
+    color: #007bb6; /* Rangi ya Bluu nzito kwa ajili ya kusomeka */
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #00AEEF;
+    text-transform: uppercase;
+}
+
+        .info-panel p {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .info-panel p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        /* --- NEWS LIST AND BLINKING BURST BADGE EFFECT --- */
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 0 15px;
+        }
+
+        .news-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            padding-bottom: 12px;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .news-item .news-text {
+            color: #0000ff;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Link ya kwanza yenye msisitizo (Bold & Italic) */
+        .news-item.featured-news .news-text {
+            font-weight: bold;
+            font-style: italic;
+            font-size: 15px;
+        }
+
+        .news-item:hover .news-text {
+            text-decoration: underline;
+            color: #0000b3;
+        }
+
+        /* --- BEJI MPYA YA NYOTA YA KULIPUKA (BURST NEW BADGE) --- */
+        .badge-burst {
+            background: #ff0000;
+            width: 32px;
+            height: 32px;
+            position: relative;
+            text-align: center;
+            flex-shrink: 0;
+            animation: blink-animation 1s linear infinite;
+        }
+        .badge-burst:before, .badge-burst:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 32px;
+            width: 32px;
+            background: #ff0000;
+        }
+        .badge-burst:before {
+            transform: rotate(30deg);
+        }
+        .badge-burst:after {
+            transform: rotate(60deg);
+        }
+        .badge-burst span {
+            position: absolute;
+            color: #ffff00;
+            font-weight: 900;
+            font-size: 9px;
+            text-transform: uppercase;
+            left: 0;
+            right: 0;
+            top: 9px;
+            z-index: 10;
+            letter-spacing: -0.5px;
+            transform: scale(0.9);
+        }
+
+        @keyframes blink-animation {
+            0% { opacity: 1; }
+            50% { opacity: 0.1; }
+            100% { opacity: 1; }
+        }
+
+        .programs-list {
+            list-style: none; 
+            padding: 0;
+        }
+
+        .programs-list li {
+            margin-bottom: 10px;
+            font-size: 14px;
+            border-bottom: 1px dashed #eee;
+            padding-bottom: 5px;
+        }
+        .programs-list .icon {
+           color: #00AEEF; 
+           margin-right: 10px; 
+           display: inline-block;
+}
+
+        /* --- PROMO SECTION --- */
+        .promo-gallery-section {
+            background-color: #ededed;
+            padding: 30px 20px;
+            margin-top: 40px;
+        }
+
+        .promo-gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .promo-card {
+            background: #ffffff;
+            border: 1px solid #dcdcdc;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .promo-card h4 {
+            color: #0000cd;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .promo-image-box {
+            width: 100%;
+            height: 250px;
+            border: 1px solid #ccc;
+            overflow: hidden;
+        }
+
+        .promo-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* --- NEW DYNAMIC & RESPONSIVE FOOTER --- */
+        .custom-footer {
+            background-color: #0a192f; 
+            color: #b3c5ef;
+            padding: 50px 20px 20px 20px;
+            font-size: 14px;
+            border-top: 4px solid #00AEEF;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-column h3 {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #00AEEF;
+        }
+
+        .footer-column p {
+            line-height: 1.6;
+            font-size: 13.5px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #b3c5ef;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease, transform 0.3s ease;
+            font-size: 13.5px;
+        }
+
+        .footer-links a::before {
+            content: '>';
+            color: #00AEEF;
+            font-weight: bold;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 20px;
+            font-size: 13px;
+            color: #8892b0;
+        }
+
+        /* --- RESPONSIVE MEDIA QUERIES --- */
+        @media (max-width: 992px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+            .promo-gallery-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 10px 10px;
+            }
+            .header-container {
+                gap: 8px;
+            }
+            .header-logo {
+                width: 50px;  
+                height: 50px;
+            }
+            .college-title {
+                font-size: 13px; 
+            }
+            .ministry-title {
+                font-size: 10px;
+            }
+            .motto {
+                font-size: 9px;
+            }
+            .slider-container {
+                height: 220px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: #0082C8;
+                padding-bottom: 15px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+            }
+
+            .nav-links li a {
+                padding: 12px;
+                border-top: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .nav-links li.nav-apply-btn {
+                padding: 10px 0;
+                margin: 0 auto;
+            }
+
+            .promo-gallery-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+        }
+
+
+    .social-links { margin-top: 10px; display: flex; gap: 10px; }
+
+.social-icon {
+    width: 35px; /* Ukubwa mdogo */
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: transform 0.2s;
+}
+
+.social-icon:hover { transform: scale(1.1); }
+
+/* Rangi maalum */
+.fb { background-color: #1877F2; }
+.wa { background-color: #25D366; }
+.ig { 
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); 
+}
+
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <img class="header-logo" src="image/logo/logo 1.jpeg" alt="SAMIHAS Logo Left">
+
+            <div class="header-text">
+                <div class="ministry-title">THE ANGLICAN DIOCESE OF TANGA</div>
+                <div class="college-title">ST.AUGUSTINE MUHEZA INSTITUTE OF HEALTH AND ALLIED SCIENCES (SAMIHAS)</div>
+            </div>
+
+            <img class="header-logo" src="image/logo/logo 2.jpg" alt="SAMIHAS Logo Right">
+        </div>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="nav-list">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="Admission.html">Admission</a></li>
+                <li><a href="Programs.html">Programs Offered</a></li>
+                <li><a href="Contact.html">Contact Us</a></li>
+                <!-- Kitufe kipya cha Apply Now kwenye Navigation -->
+                <li class="nav-apply-btn"><a href="Admission.html">Apply Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="slider-container">
+            <div class="slides">
+                <div class="slide"><img src="image/picha1.jpg" alt="SAMIHAS Campus"></div>
+                <div class="slide"><img src="image/picha.jpeg" alt="SAMIHAS Students"></div>
+                <div class="slide"><img src="image/picha3.jpg" alt="SAMIHAS Laboratory"></div>
+            </div>
+        </div>
+    </section>
+
+    <main class="main-container">
+        <!-- --- SECTION YA NEWS & EVENTS YENYE BURST BADGE KAMA PICHA --- -->
+        <section class="info-panel news-panel">
+            <h3>News &amp; Events</h3>
+            <div class="news-list">
+                <a href="#" class="news-item featured-news">
+                    <div class="badge-burst"><span>New</span></div>
+                    <span class="news-text">For 2025/2026 Intake Online Application Click Here</span>
+                </a>
+                <a href="#" class="news-item">
+                    <div class="badge-burst"><span>New</span></div>
+                    <span class="news-text">Application form (September Intake Academic Year 2025/2026)</span>
+                </a>
+                <a href="#" class="news-item">
+                    <div class="badge-burst"><span>New</span></div>
+                    <span class="news-text">Joining instructions - Clinical Medicine, Pharmaceutical Sciences and Clinical Nutrition (September intake - Academic year 2025/2026)</span>
+                </a>
+                <a href="#" class="news-item">
+                    <div class="badge-burst"><span>New</span></div>
+                    <span class="news-text">Nursing and social work joining instruction (September intake 2025/2026)</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="info-panel">
+        <h3>Why Choose Us</h3>
+        <div class="content-body">
+            <p>St. Augustine Institute of Health and Allied Sciences was established in 2013 as an FBO Health Training Institution (HTI) fully registered by the National Council for Technical Education (NACTVET) with registration number <strong>REG/HAS/088</strong>.</p>
+            <p>It was established in 2013 for the purpose of improving the human resources for health through quality education in Health and Allied Sciences.</p>
+            <p>The institute is registered by NACTE and TNMC and offers training in Nursing, Clinical Medicine and community development  in Tanzania</p>
+            <p>St. Augustine Institute of Health and Allied Sciences is located at Tanganyika  Village along the teule road in Muheza District –Tanga region.</p>
+        </div>
+    </section>
+
+   <section class="info-panel">
+    <h3>Programs Offered</h3>
+    <ul class="programs-list">
+        <li><span class="icon">➤</span> ORDINARY DIPLOMA IN CLINICAL MEDICINE (3 Years)</li>
+        <li><span class="icon">➤</span> ORDINARY DIPLOMA IN NURSING AND MIDWIFERY (3 Years)</li>
+        <li><span class="icon">➤</span> DIPLOMA IN COMMUNITY DEVELOPMENT (3 Years)</li>
+    </ul>
+</section>
+</main>
+
+    <section class="promo-gallery-section">
+        <div class="promo-gallery-container">
+            <div class="promo-card">
+                <h4>Good Learning Environment</h4>
+                <div class="promo-image-box">
+                    <img src="image/picha1.jpg" alt="Good Learning Environment">
+                </div>
+            </div>
+            <div class="promo-card">
+                <h4>Our Brochures</h4>
+                <div class="promo-image-box">
+                    <img src="image/picha2.jpeg" alt="Our Brochures 1">
+                </div>
+            </div>
+            <div class="promo-card">
+                <h4>Our Brochures</h4>
+                <div class="promo-image-box">
+                    <img src="image/picha3.jpg" alt="Our Brochures 2">
+                </div>
+            </div>
+            <div class="promo-card">
+                <h4>Best Practicals</h4>
+                <div class="promo-image-box">
+                    <img src="image/picha4.jpg" alt="Best Practicals">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="custom-footer">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h3>SAMIHAS</h3>
+                <p>St. Augustine Muheza Institute of Health and Allied Sciences (SAMIHAS) is a leading institution providing quality health training under the Anglican Diocese of Tanga.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="Admission.html">Admissions</a></li>
+                    <li><a href="Programs.html">Programs Offered</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Boards &amp; Councils</h3>
+                <ul class="footer-links">
+                    <li><a href="https://www.necta.go.tz" target="_blank">NECTA</a></li>
+                    <li><a href="https://www.nacte.go.tz" target="_blank">NACTVET (NACTE)</a></li>
+                    <li><a href="https://.heslb.go.tz" target="_blank">HESLB</a></li>
+                    <li><a href="https://www.tcu.go.tz" target="_blank">TCU</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Government Ministries</h3>
+                <ul class="footer-links">
+                    <li><a href="#" target="_blank">Ministry of Health</a></li>
+                    <li><a href="#" target="_blank">Ministry of Education (MoEST)</a></li>
+                    <li><a href="#" target="_blank">Tanzania Institute of Education (TIE)</a></li>
+                    <li><a href="#" target="_blank">MUHAS University</a></li>
+                </ul>
+            </div>
+          <div class="social-links">
+              <h3>Follow Us</h3>
+              <a href="https://facebook.com/samihas" class="social-icon fb" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://instagram.com/samihas1943" class="social-icon ig" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="https://wa.me/255718792882" class="social-icon wa" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 St. Augustine Muheza Institute of Health and Allied Sciences (SAMIHAS). All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.getElementById('mobile-menu');
+            const navList = document.getElementById('nav-list');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                navList.classList.toggle('active');
+            });
+
+            let currentSlideIndex = 0;
+            const slides = document.querySelectorAll('.slide');
+
+            function showSlides() {
+                slides.forEach(slide => {
+                    slide.style.display = 'none';
+                });
+
+                currentSlideIndex++;
+                if (currentSlideIndex > slides.length) {
+                    currentSlideIndex = 1;
+                }
+
+                slides[currentSlideIndex - 1].style.display = 'block';
+                setTimeout(showSlides, 7000);
+            }
+
+            if(slides.length > 0) {
+                showSlides();
+            }
+        }); 
+    </script>
+</body>
+</html>

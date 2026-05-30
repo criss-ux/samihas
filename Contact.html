@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - SAMIHAS</title>
+    <!-- FontAwesome for professional icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- RESET & BASE STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- HEADER & BRANDING --- */
+        header {
+            background-color: #007bb6;
+            padding: 5px 10px;
+            border-bottom: 3px solid #005f8d;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 15px;
+        }
+
+        .header-logo {
+            width: 70px;  
+            height: 70px; 
+            border-radius: 50%;
+            object-fit: contain; 
+            background-color: #ffffff; 
+            flex-shrink: 0; 
+            border: 2px solid #ffffff; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            padding: 2px; 
+        }
+
+        .header-text {
+            text-align: center;
+            flex: 1;
+        }
+
+        .ministry-title {
+            color: #ffffff;
+            font-size: 13px; 
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .college-title {
+            color: #ffffff;
+            font-size: 20px; 
+            font-weight: 800;
+            margin-bottom: 4px;
+            line-height: 1.2;
+        }
+
+
+        /* --- NAVIGATION PANEL --- */
+        nav {
+            background: linear-gradient(to right, #00AEEF 80%, #0082C8 100%);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            width: 100%;
+        }
+
+        .nav-links li {
+            flex: 1;
+            text-align: center;
+        }
+
+        .nav-links a {
+            display: block;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 16px 10px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background-color: #007bb6;
+            box-shadow: inset 0 -3px 0 #ffffff;
+        }
+
+        /* --- MAIN LAYOUT SECTION --- */
+        .main-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 40px auto;
+            padding: 0 20px;
+            flex: 1;
+        }
+
+        /* Top Grid: Form and Contact Info */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        /* --- LEFT SIDE: FORM --- */
+        .contact-card {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            padding: 40px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .section-title {
+            font-size: 24px;
+            color: #007bb6;
+            margin-bottom: 8px;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: #00AEEF;
+            margin-top: 8px;
+        }
+
+        .form-subtitle {
+            margin-bottom: 25px;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #334155;
+            font-size: 14px;
+        }
+
+        .input-group input, .input-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background-color: #f8fafc;
+        }
+
+        .input-group input:focus, .input-group textarea:focus {
+            border-color: #00AEEF;
+            background-color: #fff;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.15);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background-color: #10b981; 
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-submit:hover {
+            background-color: #059669;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+        }
+
+        /* --- RIGHT SIDE: DETAILS & MAP --- */
+        .info-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #007bb6 0%, #005f8d 100%);
+            color: #ffffff;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .info-card h2 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 10px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-item i {
+            font-size: 18px;
+            margin-right: 15px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 10px;
+            border-radius: 8px;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .info-item a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px dashed rgba(255,255,255,0.5);
+        }
+
+        .info-item a:hover {
+            color: #00AEEF;
+            border-bottom-color: #00AEEF;
+        }
+
+        /* --- MAP SECTION --- */
+        .map-card {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .map-card h3 {
+            font-size: 16px;
+            color: #007bb6;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .map-responsive {
+            overflow: hidden;
+            position: relative;
+            height: 250px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .map-responsive iframe {
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            border: 0;
+        }
+
+        /* --- PROFESSIONAL FOOTER --- */
+        footer {
+            background-color: #0f172a;
+            color: #94a3b8;
+            padding: 60px 20px 20px 20px;
+            margin-top: auto;
+            border-top: 5px solid #007bb6;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #334155;
+        }
+
+        .footer-col h3 {
+            color: #ffffff;
+            font-size: 16px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 30px;
+            height: 2px;
+            background-color: #00AEEF;
+        }
+
+        .footer-col p {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .footer-col ul li a::before {
+            content: '\f105';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            margin-right: 8px;
+            color: #00AEEF;
+            font-size: 12px;
+            transition: margin 0.2s;
+        }
+
+        .footer-col ul li a:hover {
+            color: #ffffff;
+        }
+
+        .footer-col ul li a:hover::before {
+            margin-right: 12px;
+        }
+
+        .footer-about-logo {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            padding: 2px;
+            margin-bottom: 15px;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 25px;
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        /* Alert Messages */
+        .alert {
+            padding: 14px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            display: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .alert-success {
+            background-color: #d1fae5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+        }
+        .alert-error {
+            background-color: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fca5a5;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .info-sidebar {
+                order: -1; 
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            .nav-links {
+                flex-direction: column;
+            }
+            .nav-links li {
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            .nav-links a {
+                padding: 12px;
+            }
+        }
+
+        .social-links { margin-top: 10px; display: flex; gap: 10px; }
+.social-icon {
+    width: 35px; /* Ukubwa mdogo */
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: transform 0.2s;
+}
+
+.social-icon:hover { transform: scale(1.1); }
+
+/* Rangi maalum */
+.fb { background-color: #1877F2; }
+.wa { background-color: #25D366; }
+.ig { 
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); 
+}
+
+
+    </style>
+</head>
+<body>
+
+    <!-- HEADER SECTION -->
+    <header>
+        <div class="header-container">
+            <img src="image/logo/logo 1.jpeg" alt="SAMIHAS Logo Left" class="header-logo" onerror="this.style.display='none'">
+            <div class="header-text">
+                <div class="ministry-title">The Anglican Diocese of Tanga</div>
+                <div class="college-title">ST. AUGUSTINE MUHEZA INSTITUTE OF HEALTH AND ALLIED SCIENCES (SAMIHAS)</div>
+            </div>
+            <img src="image/logo/logo 2.jpg" alt="SAMIHAS Logo Right" class="header-logo" onerror="this.style.display='none'">
+        </div>
+    </header>
+
+    <!-- NAVIGATION BAR -->
+    <nav>
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="Admission.html">Admission</a></li>
+                <li><a href="Programs.html">Programs Offered</a></li>
+                <li><a href="Contact.html" class="active">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="main-container">
+        <div class="contact-grid">
+
+            <!-- LEFT COLUMN: CONTACT FORM -->
+            <div class="contact-card">
+                <h2 class="section-title">Contact Form</h2>
+                <p class="form-subtitle">Fill out this form and our admissions team will get back to you as soon as possible.</p>
+                <div id="alert-msg" class="alert"></div>
+
+                <form id="contactForm">
+                    <div class="input-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" placeholder="Example: Johnson akili shaha" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="Example: johnson@gmil.com" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" placeholder="Example: +255 734 145 797" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="message">Your Message / Program of Interest</label>
+                        <textarea id="message" rows="5" placeholder="Write your details here..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Send Message</button>
+                </form>
+            </div>
+
+            <!-- RIGHT COLUMN: INFO & MAP -->
+            <div class="info-sidebar">
+                <!-- Info Box -->
+                <div class="info-card">
+                    <h2>Get In Touch</h2>
+
+                    <div class="info-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div>
+                            <strong>Postal Address:</strong><br>
+                            P.O. Box 05, Muheza - Tanga
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <div>
+                            <strong>Mobile Phone:</strong><br>
+                            <a href="tel:+255734145797">+255&nbsp;734&nbsp;145&nbsp;797</a><br>
+                            <a href="tel:+255743318653">+255&nbsp;743&nbsp;318&nbsp;653</a>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div>
+                            <strong>Email Address:</strong><br>
+                            <a href="mailto:info@samihas.ac.tz">info@samihas.ac.tz</a>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="fa-solid fa-globe"></i>
+                        <div>
+                            <strong>Website:</strong><br>
+                            <a href="http://www.Samihas.ac.tz" target="_blank">www.Samihas.ac.tz</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Map Box -->
+                <div class="map-card">
+                    <h3><i class="fa-solid fa-map-location-dot"></i> Our Location</h3>
+                    <div class="map-responsive">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.331298539097!2d38.78426097424603!3d-5.178496494799276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x185c490333333333%3A0x286395dc69f532a8!2sMuheza%20Designated%20District%20Hospital!5e0!3m2!1sen!2stz!4v1710000000000!5m2!1sen!2stz" 
+                            title="SAMIHAS Google Map Location"
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- PROFESSIONAL 4-COLUMN FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <!-- Column 1: About -->
+            <div class="footer-col">
+                <h3>SAMIHAS</h3>
+                <p>St. Augustine Muheza Institute of Health and Allied Sciences (SAMIHAS) is a leading institution providing quality health training under the Anglican Diocese of Tanga.</p>
+
+            </div>
+
+            <!-- Column 2: Quick Links -->
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="Admission.html">Admissions</a></li>
+                    <li><a href="Programs.html">Programs Offered</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Education Boards -->
+            <div class="footer-col">
+                <h3>Boards &amp;  Councils</h3>
+                <ul>
+                    <li><a href="https://www.necta.go.tz" target="_blank" rel="noopener">NECTA</a></li>
+                    <li><a href="https://www.nacte.go.tz" target="_blank" rel="noopener">NACTVET (NACTE)</a></li>
+                    <li><a href="https://www.heslb.go.tz" target="_blank" rel="noopener">HESLB</a></li>
+                    <li><a href="https://www.tcu.go.tz" target="_blank" rel="noopener">TCU</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Ministries -->
+            <div class="footer-col">
+                <h3>Government Ministries</h3>
+                <ul>
+                    <li><a href="https://www.moh.go.tz" target="_blank" rel="noopener">Ministry of Health</a></li>
+                    <li><a href="https://www.moe.go.tz" target="_blank" rel="noopener">Ministry of Education (MoEST)</a></li>
+                    <li><a href="https://www.tie.go.tz" target="_blank" rel="noopener">Tanzania Institute of Education (TIE)</a></li>
+                    <li><a href="https://www.muhas.ac.tz" target="_blank" rel="noopener">MUHAS University</a></li>
+                </ul>
+            </div>
+                <div class="social-links">
+                   <h3>Follow Us</h3>
+                   <a href="https://facebook.com/samihas" class="social-icon fb" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                   <a href="https://instagram.com/samihas1943" class="social-icon ig" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                   <a href="https://wa.me/255718792882" class="social-icon wa" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 St. Augustine Muheza Institute of Health and Allied Sciences (SAMIHAS). All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT FOR FORM VALIDATION -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+
+            const fullName = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const message = document.getElementById('message').value.trim();
+            const alertMsg = document.getElementById('alert-msg');
+
+            if(fullName === "" || email === "" || phone === "" || message === "") {
+                alertMsg.className = "alert alert-error";
+                alertMsg.innerHTML = "Please fill in all fields correctly.";
+                alertMsg.style.display = "block";
+                return;
+            }
+
+            alertMsg.className = "alert alert-success";
+            alertMsg.innerHTML = "Thank you " + fullName + "! Your message has been sent successfully. Our team will contact you shortly.";
+            alertMsg.style.display = "block";
+
+            document.getElementById('contactForm').reset();
+
+            setTimeout(function() {
+                alertMsg.style.display = "none";
+            }, 5000);
+        });
+    </script>
+
+</body>
+</html>

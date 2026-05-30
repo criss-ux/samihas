@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>About Us | SAMIHAS</title>
+    <style>
+        /* --- Modern CSS Reset & Design Tokens --- */
+        :root {
+            --primary: #005f8d;
+            --primary-light: #007bb6;
+            --primary-dark: #121921;
+            --accent: #00AEEF;
+            --accent-gradient: linear-gradient(to right, #00AEEF 80%, #0082C8 100%);
+            --accent-green: #00a896;
+            --text-dark: #1e272e;
+            --text-muted: #5a6169;
+            --bg-light: #f4f7f9;
+            --bg-card: #ffffff;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            flex: 1; /* Inasukuma footer chini kama content ni chache */
+        }
+
+        /* --- COMPACT HEADER & BRANDING --- */
+        header {
+            background-color: var(--primary-light);
+            padding: 5px 10px; 
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 15px;
+        }
+
+        .header-logo {
+            width: 70px;  
+            height: 70px; 
+            border-radius: 50%;
+            object-fit: contain; 
+            background-color: #ffffff; 
+            flex-shrink: 0; 
+            border: 2px solid #ffffff; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            padding: 2px; 
+            
+        }
+
+        .header-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .header-text {
+            text-align: center;
+            flex: 1;
+        }
+
+        .ministry-title {
+            color: #ffffff;
+            font-size: 13px; 
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .college-title {
+            color: #ffffff;
+            font-size: 20px; 
+            font-weight: 800;
+            margin-bottom: 4px;
+            line-height: 1.2;
+        }
+
+
+        /* --- NAVIGATION PANEL (WITH GRADIENT) --- */
+        nav {
+            background: var(--accent-gradient);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 15px;
+            background: none;
+            border: none;
+            outline: none;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            width: 100%;
+            justify-content: space-around;
+        }
+
+        .nav-links li {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .nav-links a {
+            display: block;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 15px 10px;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background-color: var(--primary-light);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: var(--accent-green);
+        }
+
+        /* --- TYPOGRAPHY & SECTIONS --- */
+        .section-header {
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .section-header.centered {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            color: var(--primary);
+            font-size: 1.85rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .section-header:not(.centered) .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: var(--accent-green);
+            margin-top: 8px;
+            border-radius: 20px;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* --- LAYOUT COMPONENTS --- */
+        .card {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 30px;
+            border-left: 5px solid var(--primary);
+        }
+
+        .card p {
+            font-size: 1.05rem;
+            color: #4a5568;
+        }
+
+        .split-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .split-card {
+            background: var(--bg-card);
+            padding: 35px 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            border-top: 5px solid var(--primary);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .split-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* --- CORE VALUES GRID --- */
+        .pillars-section {
+            margin-top: 50px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .value-card {
+            background: var(--bg-card);
+            padding: 30px 25px;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            border-bottom: 4px solid var(--accent-green);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-bottom-color: var(--primary);
+        }
+
+        .value-icon {
+            font-size: 2.3rem;
+            margin-bottom: 15px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 168, 150, 0.08);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+        }
+
+        .value-card h3 {
+            color: var(--primary);
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .value-card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* --- BADGES --- */
+        .meta-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .badge {
+            background: #eef6f9;
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            border: 1px solid rgba(0, 95, 141, 0.15);
+            transition: var(--transition);
+        }
+
+        .badge:hover {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        /* --- COMPACTED FOOTER --- */
+        footer {
+            background-color: var(--primary-dark);
+            color: #ffffff;
+            padding: 2rem 1.5rem 1.5rem 1.5rem; /* Imepunguzwa kutoka 3.5rem */
+            margin-top: auto;
+            border-top: 4px solid var(--accent);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem; /* Imepunguzwa kutoka 2.5rem */
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem; /* Imepunguzwa kutoka 2rem */
+        }
+
+        .footer-col {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem; /* Imepunguzwa kutoka 1rem */
+        }
+
+        .footer-col h3 {
+            color: #ffffff;
+            font-size: 1.1rem; /* Imepunguzwa kidogo */
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            padding-bottom: 6px;
+            font-weight: 700;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 30px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .footer-col p {
+            color: #b9c4d6;
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem; /* Nafasi ndogo kati ya link na link */
+        }
+
+        .footer-col ul li a {
+            color: #b9c4d6;
+            text-decoration: none;
+            font-size: 0.88rem;
+            transition: color 0.2s ease, padding-left 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .footer-col ul li a:hover {
+            color: #ffffff;
+            padding-left: 4px;
+        }
+
+        .footer-col ul li a::before {
+            content: '›';
+            color: var(--accent);
+            font-weight: bold;
+            display: inline-block;
+            font-size: 1.1rem;
+            width: 1em;
+            margin-right: 0.2rem;
+            line-height: 1;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #24314d;
+            padding-top: 1rem; /* Imepunguzwa kutoka 1.5rem */
+            font-size: 0.8rem;
+            color: #71829e;
+        }
+
+        /* --- RESPONSIVE BREAKPOINTS --- */
+        @media (max-width: 1024px) {
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+                padding: 15px 20px;
+                gap: 15px;
+            }
+            
+            .header-logo {
+                width: 70px;
+                height: 70px;
+            }
+
+            .college-title {
+                font-size: 16px;
+            }
+
+            .ministry-title {
+                font-size: 11px;
+            }
+
+            .nav-container {
+                justify-content: flex-end;
+                padding: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                max-height: 0;
+                overflow: hidden;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary);
+                box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+                transition: max-height 0.4s ease-in-out;
+            }
+
+            .nav-active .nav-links {
+                max-height: 350px; 
+            }
+
+            .nav-active .menu-toggle span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .nav-active .menu-toggle span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .nav-active .menu-toggle span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+
+            .nav-links li {
+                width: 100%;
+            }
+
+            .nav-links a {
+                padding: 16px 24px;
+                font-size: 13px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .nav-links a.active::after {
+                display: none;
+            }
+
+            .split-grid, .values-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 25px 15px;
+            }
+
+            .card {
+                padding: 25px 20px;
+            }
+        }
+
+        .social-links { margin-top: 10px; display: flex; gap: 10px; }
+
+.social-icon {
+    width: 35px; /* Ukubwa mdogo */
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #ffffff !important;
+    text-decoration: none;
+    font-size: 16px;
+    transition: transform 0.2s;
+}
+
+.social-icon:hover { transform: scale(1.1); }
+.social-icon i {
+    z-index: 1;
+}
+
+/* Rangi maalum */
+.fb { background-color: #1877F2; }
+.wa { background-color: #25D366; }
+.ig { 
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); 
+}
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <img src="image/logo/logo 1.jpeg" alt="SAMIHAS Logo Left" class="header-logo">
+            <div class="header-text">
+                <div class="ministry-title">The Anglican Diocese of Tanga</div>
+                <h1 class="college-title">ST. AUGUSTINE MUHEZA INSTITUTE OF HEALTH AND ALLIED SCIENCES (SAMIHAS)</h1>
+            </div>
+            <img src="image/logo/logo 2.jpg" alt="SAMIHAS Logo Right" class="header-logo">
+        </div>
+    </header>
+
+    <nav id="navbar">
+        <div class="nav-container">
+            <button type="button" class="menu-toggle" id="mobile-menu" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About Us</a></li>
+                <li><a href="Admission.html">Admission</a></li>
+                <li><a href="Programs.html">Programs Offered</a></li>
+                <li><a href="Contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Background Section -->
+        <section class="card">
+            <div class="section-header">
+                <h2 class="section-title">Background Information</h2>
+            </div>
+            <p>Established in 2013, the St. Augustine Institute of Health and Allied Sciences (SAMIHAS) traces its foundational roots back to the St. Anne Nurses Training School, founded in 1939 at Magila, Muheza. Decades of educational heritage have evolved into a premier modern institute offering elite training pathways in both Nursing and Clinical Medicine.</p>
+            <div class="meta-flex">
+                <span class="badge">NACTVET Registered</span>
+                <span class="badge">TNMC Accredited</span>
+                <span class="badge">Clinical Partner: Muheza DDH</span>
+            </div>
+        </section>
+
+        <!-- Vision and Mission Grid -->
+        <div class="split-grid">
+            <section class="split-card">
+                <div class="section-header">
+                    <h2 class="section-title">Our Vision</h2>
+                </div>
+                <p>To become a recognized center of excellence for training healthcare professionals, executing quality clinical and health systems research, and delivering superior public health services.</p>
+            </section>
+
+            <section class="split-card">
+                <div class="section-header">
+                    <h2 class="section-title">Our Mission</h2>
+                </div>
+                <p>To systematically pursue better community health profiles through transformative education, rigorous practical training, advanced research, and dedicated health services.</p>
+            </section>
+        </div>
+
+        <!-- Core Values Section -->
+        <section class="pillars-section">
+            <div class="section-header centered">
+                <h2 class="section-title">Our Core Values</h2>
+                <p class="section-subtitle">The four core pillars of character and service at SAMIHAS.</p>
+            </div>
+
+            <div class="values-grid">
+                <div class="value-card">
+                    <span class="value-icon">🎓</span>
+                    <h3>Academic Excellence</h3>
+                    <p>Maintaining uncompromising educational standards and innovative scientific research frameworks.</p>
+                </div>
+                <div class="value-card">
+                    <span class="value-icon">⚖️</span>
+                    <h3>Outstanding Character</h3>
+                    <p>Instilling deep professional ethics, accountability, and leadership qualities in every graduate.</p>
+                </div>
+                <div class="value-card">
+                    <span class="value-icon">🤝</span>
+                    <h3>Compassionate Care</h3>
+                    <p>Approaching health clinical practice and public outreach with empathy and patient-first dedication.</p>
+                </div>
+                <div class="value-card">
+                    <span class="value-icon">🌍</span>
+                    <h3>Equity &amp; Inclusion</h3>
+                    <p>Ensuring accessible healthcare training paths and fair distribution of resource benefits to all.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>SAMIHAS</h3>
+                    <p>St. Augustine Muheza Institute of Health and Allied Sciences (SAMIHAS) is a leading institution providing quality health training under the Anglican Diocese of Tanga.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="Admission.html">Admissions</a></li>
+                        <li><a href="Programs.html">Programs Offered</a></li>
+                        <li><a href="Contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Boards &amp; Councils</h3>
+                    <ul>
+                        <li><a href="https://www.necta.go.tz" target="_blank" rel="noopener">NECTA</a></li>
+                        <li><a href="https://www.nacte.go.tz" target="_blank" rel="noopener">NACTVET (NACTE)</a></li>
+                        <li><a href="https://www.heslb.go.tz" target="_blank" rel="noopener">HESLB</a></li>
+                        <li><a href="https://www.tcu.go.tz" target="_blank" rel="noopener">TCU</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Ministries</h3>
+                    <ul>
+                        <li><a href="https://www.moh.go.tz" target="_blank" rel="noopener">Ministry of Health</a></li>
+                        <li><a href="https://www.moe.go.tz" target="_blank" rel="noopener">Ministry of Education</a></li>
+                        <li><a href="https://www.tie.go.tz" target="_blank" rel="noopener">TIE</a></li>
+                        <li><a href="https://www.muhas.ac.tz" target="_blank" rel="noopener">MUHAS</a></li>
+                    </ul>
+                </div>
+            </div>
+                <div class="social-links">
+                   <h3>Follow Us</h3>
+                   <a href="https://facebook.com/samihas" class="social-icon fb" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                   <a href="https://instagram.com/samihas1943" class="social-icon ig" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                   <a href="https://wa.me/255718792882" class="social-icon wa" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 St. Augustine Muheza Institute of Health and Allied Sciences (SAMIHAS). All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navbar = document.getElementById('navbar');
+
+        mobileMenu.addEventListener('click', () => {
+            navbar.classList.toggle('nav-active');
+        });
+    </script>
+</body>
+</html>
